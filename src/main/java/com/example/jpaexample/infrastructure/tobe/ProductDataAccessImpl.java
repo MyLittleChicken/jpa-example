@@ -1,7 +1,7 @@
 package com.example.jpaexample.infrastructure.tobe;
 
-import com.example.jpaexample.entity.Product;
 import com.example.jpaexample.infrastructure.ProductJpaRepository;
+import com.example.jpaexample.infrastructure.persistence.ProductPersistence;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 
@@ -15,17 +15,17 @@ public class ProductDataAccessImpl implements ProductDataAccess {
     private final ProductJpaRepository productJpaRepository;
 
     @Override
-    public Optional<List<Product>> findAll() {
+    public Optional<List<ProductPersistence>> findAll() {
         return Optional.of(productJpaRepository.findAll());
     }
 
     @Override
-    public Optional<Product> findById(final Long id) {
+    public Optional<ProductPersistence> findById(final Long id) {
         return productJpaRepository.findById(id);
     }
 
     @Override
-    public Optional<Product> save(final Product product) {
+    public Optional<ProductPersistence> save(final ProductPersistence product) {
         return Optional.of(productJpaRepository.save(product));
     }
 

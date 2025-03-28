@@ -1,6 +1,7 @@
 package com.example.jpaexample.service;
 
-import com.example.jpaexample.entity.Product;
+import com.example.jpaexample.domain.Product;
+import com.example.jpaexample.infrastructure.persistence.ProductPersistence;
 import com.example.jpaexample.infrastructure.tobe.ProductDataAccess;
 import com.example.jpaexample.presentation.dto.CreateProductDto;
 import com.example.jpaexample.presentation.dto.DeleteProductDto;
@@ -22,24 +23,35 @@ public class ProductServiceImpl implements ProductService {
     public List<Product> getAllProducts() {
         return productDataAccess.findAll()
                 .filter(products -> !products.isEmpty())
-                .orElseThrow();
+                .orElseThrow()
+                .stream()
+                .map(Product::fromPersistence)
+                .toList();
     }
 
     @Override
     public Product getProductById(final Long id) {
-        return productDataAccess.findById(id).orElseThrow();
+        return Product.fromPersistence(
+                productDataAccess.findById(id).orElseThrow()
+        );
     }
 
     @Override
     @Transactional
     public Product createProduct(final CreateProductDto.Request request) {
-        return productDataAccess.save(Product.fromRequest(request)).orElseThrow();
+        Product product = Product.fromRequest(request);
+        return Product.fromPersistence(
+                productDataAccess.save(ProductPersistence.fromDomain(product)).orElseThrow()
+        );
     }
 
     @Override
     @Transactional
     public Product updateProduct(final UpdateProductDto.Request request) {
-        return productDataAccess.save(Product.fromRequest(request)).orElseThrow();
+        Product product = Product.fromRequest(request);
+        return Product.fromPersistence(
+                productDataAccess.save(ProductPersistence.fromDomain(product)).orElseThrow()
+        );
     }
 
     @Override

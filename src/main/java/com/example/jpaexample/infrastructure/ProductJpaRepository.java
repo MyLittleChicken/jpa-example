@@ -1,7 +1,7 @@
 package com.example.jpaexample.infrastructure;
 
-import com.example.jpaexample.entity.Product;
+import com.example.jpaexample.infrastructure.persistence.ProductPersistence;
 import org.springframework.data.jpa.repository.JpaRepository;
 
-public interface ProductJpaRepository extends JpaRepository<Product, Long> {
+public interface ProductJpaRepository extends JpaRepository<ProductPersistence, Long> {
 }
