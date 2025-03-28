@@ -74,3 +74,37 @@ com.example.jpaexample
 - `POST /api/products` - 상품 생성
 - `PATCH /api/products` - 상품 수정
 - `DELETE /api/products` - 상품 삭제
+
+## 도커를 통한 실행 방법
+
+### 실행 방법
+
+1. 프로젝트 루트 디렉토리에서 다음 명령어 실행:
+
+```bash
+docker-compose up --build
+```
+
+2. 애플리케이션이 성공적으로 시작되면 다음 주소로 API에 접근할 수 있습니다:
+```
+http://localhost:8080/api/products
+```
+
+### 종료 방법
+
+1. 다음 명령어로 컨테이너 중지 및 리소스 정리:
+
+```bash
+docker-compose down
+```
+
+2. 데이터베이스 볼륨을 포함한 모든 리소스를 삭제하려면:
+
+```bash
+docker-compose down -v
+```
+
+### 구성 설명
+
+- **MySQL**: 컨테이너는 포트 3306으로 노출되며, 초기 데이터베이스 `jpaexample`이 생성됩니다.
+- **애플리케이션**: Spring Boot 애플리케이션이 포트 8080으로 노출됩니다.
