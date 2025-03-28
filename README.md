@@ -7,10 +7,12 @@ JPA 와 MySQL 을 사용하여 간단한 상품(Product) CRUD 기능을 구현�
 
 ```
 com.example.jpaexample
-├── entity                  # JPA 엔티티 클래스
+├── domain                  # 도메인 엔티티
 │   └── Product.java        # 상품 엔티티
 ├── infrastructure          # 데이터 접근 계층
 │   ├── ProductJpaRepository.java  # JPA 리포지토리
+│   ├── persistence         # JPA 엔티티
+│   │   └── ProductPersistenceEntity.java  # 상품 JPA 엔티티
 │   └── tobe                # 개선 시도 패키지
 │       ├── ProductDataAccess.java      # 데이터 접근 인터페이스
 │       └── ProductDataAccessImpl.java  # JPA 기반 구현체
@@ -57,7 +59,7 @@ com.example.jpaexample
 
 2. **도메인 엔티티와 영속성 엔티티 분리**:
    - `Product` 엔티티는 영속성과 관련 없는 순수한 비즈니스 로직만 포함
-   - `ProductEntity` 엔티티는 JPA 관련 애노테이션을 포함
+   - `ProductPersistence` 엔티티는 JPA 관련 애노테이션을 포함
 
 ## 개선 결과
 
