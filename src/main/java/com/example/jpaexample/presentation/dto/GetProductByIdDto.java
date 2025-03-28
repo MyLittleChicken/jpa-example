@@ -1,6 +1,6 @@
 package com.example.jpaexample.presentation.dto;
 
-import com.example.jpaexample.entity.Product;
+import com.example.jpaexample.domain.Product;
 
 public class GetProductByIdDto {
 

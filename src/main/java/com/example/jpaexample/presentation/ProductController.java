@@ -34,7 +34,7 @@ public class ProductController {
 
     @DeleteMapping
     public void deleteProduct(@RequestBody final DeleteProductDto.Request request) {
-
+        productService.deleteProduct(request);
     }
 
 }

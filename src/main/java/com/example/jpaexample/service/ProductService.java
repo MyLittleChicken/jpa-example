@@ -1,6 +1,6 @@
 package com.example.jpaexample.service;
 
-import com.example.jpaexample.entity.Product;
+import com.example.jpaexample.domain.Product;
 import com.example.jpaexample.presentation.dto.CreateProductDto;
 import com.example.jpaexample.presentation.dto.DeleteProductDto;
 import com.example.jpaexample.presentation.dto.UpdateProductDto;
